@@ -1,0 +1,40 @@
+<div>
+  <!--
+        $ctrl stands for Controller and this is how we can access
+        controller properties.
+
+        <h3>{{ $ctrl.message }}</h3>    
+
+        But, since we are using controllerAs: "model" in our controller,
+        then we can use model.message
+    
+    <h3>{{ model.message }}</h3>
+    <input type="text" ng-model="model.message"/>
+    <button ng-click="model.changeMessage()">
+        Change Message
+    </button>
+    -->
+  <table class="table">
+    <tr>
+      <th>Title</th>
+      <th>Length</th>
+      <th>Rating</th>
+      <th></th>
+    </tr>
+    <tr ng-repeat="movie in model.movies">
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.length }}</td>
+      <td>{{ movie.rating }}</td>
+      <td>
+          <div class="btn-group">
+              <button class="btn btn-default" ng-click="model.upRating(movie)">
+                  <span class="glyphicon glyphicon-plus"></span>
+              </button>
+              <button class="btn btn-default" ng-click="model.downRating(movie)">
+                  <span class="glyphicon glyphicon-minus"></span>
+              </button>
+          </div>
+      </td>
+    </tr>
+  </table>
+</div>

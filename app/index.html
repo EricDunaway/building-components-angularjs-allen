@@ -1,0 +1,29 @@
+<html ng-app="PsMovies">
+  <head> 
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+  <body ng-cloak>
+
+    <nav class="navbar navbar-default navbar-inverse" class="container-fluid">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">At The Movies</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+       <movie-list></movie-list>             
+                
+    </div>
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="ps-movies/module.js"></script>
+    <script src="services/ps-movies-service.js"></script>
+    <script src="ps-movies/movie-list.component.js"></script>
+  </body>
+</html>
