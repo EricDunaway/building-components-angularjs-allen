@@ -9,22 +9,36 @@
     <nav class="navbar navbar-default navbar-inverse" class="container-fluid">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">At The Movies</a>
+                <a class="navbar-brand" ui-sref="movieList">At The Movies</a>
             </div>
+            <ul class="nav navbar-nav navbar-left">
+              <li>
+                <!--
+                  movieList is the friendly name of our defined
+                  movie list state in the module.js
+                -->
+                <a ui-sref="movieList">List</a>
+              </li>
+              <li>
+                <a ui-sref="appAbout">About</a>
+              </li>
+            </ul>
         </div>
     </nav>
 
     <div class="container">
 
-       <movie-list></movie-list>             
+      <ui-view></ui-view>            
                 
     </div>
 
     <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/@uirouter/angularjs/release/angular-ui-router.js"></script>
     <script src="ps-movies/module.js"></script>
     <script src="services/ps-movies-service.js"></script>
     <script src="ps-movies/movie-list.component.js"></script>
     <script src="ps-movies/movie-rating.component.js"></script>
+    <script src="ps-movies/app-about.component.js"></script>
+    <script src="ps-movies/movie-detail.component.js"></script>
   </body>
 </html>
