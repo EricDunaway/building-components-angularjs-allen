@@ -30,14 +30,15 @@
         </movie-rating>
       </td>
       <td>
-        <div class="btn-group">
-          <button class="btn btn-default" ng-click="model.upRating(movie)">
-            <span class="glyphicon glyphicon-plus"></span>
-          </button>
-          <button class="btn btn-default" ng-click="model.downRating(movie)">
-            <span class="glyphicon glyphicon-minus"></span>
-          </button>
-        </div>
+        <button class="btn btn-default" ng-click="model.upRating(movie)">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
+        <button class="btn btn-default" ng-click="model.downRating(movie)">
+          <span class="glyphicon glyphicon-minus"></span>
+        </button>
+        <a ui-sref="movieDetail({id: movie.id})" class="btn btn-default">
+          <span class="glyphicon glyphicon-zoom-in"></span>
+        </a>
       </td>
     </tr>
   </table>

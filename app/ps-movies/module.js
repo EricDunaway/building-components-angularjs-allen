@@ -7,20 +7,22 @@
       .state("movieList", {
         url: "/list",
         component: "movieList",
-        title: "Movie List"
-        // title: function(params) return 'Movie List ${params.code}';
+        title: "Movie List",
       })
       .state("appAbout", {
         url: "/about",
         component: "appAbout",
-        title: "About"
+        title: "About",
       })
       .state("movieDetail", {
         url: "/detail/:id",
         component: "movieDetail",
-        title: function(params){
-            return "Movie ID ${params.id}"
-        }
+        title: function (params) {
+          return "Movie ID " + params.id;
+        },
+        data: {
+          needAdmin: true,
+        },
       });
 
     $urlRouterProvider.otherwise("/list");
@@ -39,6 +41,14 @@
           title = title.call(transition.to(), transition.params());
         }
         $window.document.title = title;
+      }
+    });
+    // https://ui-router.github.io/guide/ng1/migrate-to-1_0#state-change-events
+    $transitions.onStart({}, (transition) => {
+      var toState = transition.targetState();
+      console.log("ToState", toState._definition.data);
+      if (toState._definition.data && toState._definition.data.needAdmin) {
+        console.log("Need admin");
       }
     });
   });
