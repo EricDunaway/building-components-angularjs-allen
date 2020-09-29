@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var controller = function (psMoviesService) {
+  var controller = function (psMoviesService, $state) {
     /**
      * Inside the controller, we typically avoid using the "this"
      * reference since "this" in javascript is a little bit slippery
@@ -30,6 +30,9 @@
             movie.rating -= 1;
         }
     }
+    model.goTo = function (id) {
+      $state.go("movieDetails", {id: id});
+    }
   };
 
   /**
@@ -40,6 +43,6 @@
   module.component("movieList", {
     templateUrl: "/ps-movies/movie-list.component.html",
     controllerAs: "model",
-    controller: ["psMoviesService", controller],
+    controller: ["psMoviesService", "$state", controller],
   });
 })();

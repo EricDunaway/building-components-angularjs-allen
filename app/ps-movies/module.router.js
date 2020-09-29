@@ -14,9 +14,9 @@
         component: "appAbout",
         title: "About",
       })
-      .state("movieDetail", {
-        url: "/detail/:id",
-        component: "movieDetail",
+      .state("movieDetails", {
+        url: "/details/:id",
+        component: "movieDetails",
         title: function (params) {
           return "Movie ID " + params.id;
         },
@@ -48,6 +48,13 @@
       var toState = transition.targetState();
       console.log("ToState", toState._definition.data);
       if (toState._definition.data && toState._definition.data.needAdmin) {
+        /**
+         * For complete login redirection, you may see
+         * https://ui-router.github.io/guide/transitionhooks#redirecting-a-transition
+         * And some sample codes 
+         * https://stackoverflow.com/a/50580624/7610023
+         * 
+         */
         console.log("Need admin");
       }
     });

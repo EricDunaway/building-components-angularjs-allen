@@ -4,8 +4,8 @@
     model.id = $stateParams.id;
   };
   var module = angular.module("PsMovies");
-  module.component("movieDetail", {
-    templateUrl: "/ps-movies/movie-detail.component.html",
+  module.component("movieDetails", {
+    templateUrl: "/ps-movies/movie-details.component.html",
     controllerAs: "model",
     controller: ["$stateParams", controller],
   });

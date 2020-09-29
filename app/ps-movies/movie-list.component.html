@@ -36,9 +36,12 @@
         <button class="btn btn-default" ng-click="model.downRating(movie)">
           <span class="glyphicon glyphicon-minus"></span>
         </button>
-        <a ui-sref="movieDetail({id: movie.id})" class="btn btn-default">
+        <a ui-sref="movieDetails({id: movie.id})" class="btn btn-default">
           <span class="glyphicon glyphicon-zoom-in"></span>
         </a>
+        <button class="btn btn-default" ng-click="model.goTo(movie.id)">
+          <span class="glyphicon glyphicon-zoom-in"></span>
+        </button>
       </td>
     </tr>
   </table>
