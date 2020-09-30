@@ -7,6 +7,6 @@
   module.component("movieDetails", {
     templateUrl: "/ps-movies/movie-details.component.html",
     controllerAs: "model",
-    controller: ["$stateParams", controller],
+    controller: ["$stateParams", controller]
   });
 })();

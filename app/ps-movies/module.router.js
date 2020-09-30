@@ -15,6 +15,13 @@
         title: "About",
       })
       .state("movieDetails", {
+        /**
+         * Instead of using url: "/details/:id", we are now adding "..." to tell the router
+         * this is a non-terminal path. Which means we need to load movieDetails and this
+         * component has the ability load a sub-component based on the additional path in the
+         * URL
+         */
+        abstract: false,
         url: "/details/:id",
         component: "movieDetails",
         title: function (params) {
@@ -23,8 +30,30 @@
         data: {
           needAdmin: true,
         },
+        /**
+         * We are adding routing configuration for this parent detail component
+         * where if we add /overview to the /details/:id/ parent URL, then it will redirect
+         * to the movie overview page.
+         */
+      })
+      .state("movieDetails.movieOverview", {
+        url: "/overview",
+        //component: "movieOverview",
+        template: "<p>This is the movie overview.</p>",
+        title: "Movie Overview",
+      })
+      .state("movieDetails.movieCast", {
+        url: "/cast",
+        //component: "movieCast",
+        template: "<p>This is info about the movie cast.</p>",
+        title: "Movie Cast",
+      })
+      .state("movieDetails.movieDirector", {
+        url: "/director",
+        //component: "movieDirector",
+        template: "<p>This is the info about the movie director.</p>",
+        title: "Movie Director",
       });
-
     $urlRouterProvider.otherwise("/list");
   });
 
@@ -51,9 +80,9 @@
         /**
          * For complete login redirection, you may see
          * https://ui-router.github.io/guide/transitionhooks#redirecting-a-transition
-         * And some sample codes 
+         * And some sample codes
          * https://stackoverflow.com/a/50580624/7610023
-         * 
+         *
          */
         console.log("Need admin");
       }

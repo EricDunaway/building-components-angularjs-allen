@@ -1,1 +1,15 @@
-<p>Movie details page for ID {{ model.id }}!</p>
+<h3>Movie details page for ID {{ model.id }}!</h3>
+
+<ul>
+  <li><a ui-sref="movieDetails.movieOverview">Overview</a></li>
+  <li><a ui-sref="movieDetails.movieCast">Cast</a></li>
+  <li><a ui-sref="movieDetails.movieDirector">Director</a></li>
+</ul>
+
+<!--
+    We are using ng-outlet so that we can load some components within
+    this child details page.
+-->
+<div class="container">
+  <ui-view></ui-view>
+</div>
