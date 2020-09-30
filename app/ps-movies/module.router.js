@@ -3,6 +3,12 @@
 
   var module = angular.module("PsMovies", ["PsMovies", "ui.router"]);
   module.config(function ($stateProvider, $urlRouterProvider) {
+    /**
+     * Set the default child state when the parent detail state is accessed.
+     */
+    $urlRouterProvider
+      .when("/details/:id", "/details/:id/overview")
+      .otherwise("/list");
     $stateProvider
       .state("movieList", {
         url: "/list",
@@ -20,6 +26,14 @@
          * this is a non-terminal path. Which means we need to load movieDetails and this
          * component has the ability load a sub-component based on the additional path in the
          * URL
+         *
+         * This is not necessary to use abstract:true for prepend url.
+         * Abstract:true only require when there is no need to show html template itself,
+         * but this template helps child state's template to render
+         *
+         * abstract: true,
+         * url: "/details/:id",
+         * template: "<ui-view></ui-view>"
          */
         abstract: false,
         url: "/details/:id",
@@ -53,8 +67,7 @@
         //component: "movieDirector",
         template: "<p>This is the info about the movie director.</p>",
         title: "Movie Director",
-      });
-    $urlRouterProvider.otherwise("/list");
+      });    
   });
 
   /**
