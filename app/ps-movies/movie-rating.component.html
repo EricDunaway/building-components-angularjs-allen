@@ -6,6 +6,7 @@
         the values inside the array.
     -->
     <span ng-repeat="entry in model.entries track by $index">
+        <span class="glyphicon {{entry}}"></span>
         <!--
             We are setting the default template as * if the outer template is not specified
             in the caller. For example, in movie-list.component.html, we are specifying
@@ -17,8 +18,8 @@
             Anything placed inside the ng-transclude will now be then the default if there
             are no outer template specified.
         -->
-        <ng-transclude>
+        <!-- <ng-transclude>
             *
-        </ng-transclude>
+        </ng-transclude> -->
     </span>
 </div>

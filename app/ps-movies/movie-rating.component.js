@@ -13,7 +13,7 @@
        * We will now create a new array with elements equal to the model.value
        * since the ng-repeat does only iterate through a collection
        */
-      model.entries = new Array(model.value);
+      model.entries = buildEntries(model.value, model.max);
     };
     /**
      * This is a function Angular will call whenever one of the bindings will change.
@@ -22,8 +22,21 @@
         /**
          * We will rebuild our array once there are changes on the "value".
          */
-        model.entries = new Array(model.value);
+        model.entries = buildEntries(model.value, model.max);
     };
+  };
+
+  /**
+   * We are creating a function that builds the entries for our rating
+   */
+  function buildEntries(value, max) {
+    var entries = [];
+    for (var i = 1; i <= max; i++) {
+      var icon = i <= value ? "glyphicon-star" : "glyphicon-star-empty";
+      entries.push(icon);
+    }
+
+    return entries;
   };
 
   /**
@@ -66,11 +79,12 @@
      */
     bindings: {
       value: "<",
+      max: "<"
     },
     /**
      * We are telling Angular that we can replace the default inner template 
      * with the outer template      
      */
-    transclude: true
+    //transclude: true
   });
 })();
